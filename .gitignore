@@ -1,0 +1,6 @@
+venv/
+target/
+dbt_modules/
+logs/
+.idea
+config/logs/

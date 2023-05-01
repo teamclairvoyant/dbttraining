@@ -1,0 +1,29 @@
+config:
+  use_colors: false
+dbt_analytics: #PROJECT ONE
+  target: dev
+  outputs:
+    dev:
+      account: cda03513
+      client_session_keep_alive: false
+      database: dbt
+      password: '{{ env_var(''PASS'') }}'
+      query_tag: dbt
+      role: dbt_developer
+      schema: public
+      threads: 4
+      type: snowflake
+      user: '{{ env_var(''USER'') }}'
+      warehouse: dbt_wh
+    prod:
+      account: cda03513
+      client_session_keep_alive: false
+      database: dbt
+      password: '{{ env_var(''PASS'') }}'
+      query_tag: dbt
+      role: dbt_developer
+      schema: public
+      threads: 4
+      type: snowflake
+      user: '{{ env_var(''USER'') }}'
+      warehouse: dbt_wh
