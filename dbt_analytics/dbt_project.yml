@@ -46,6 +46,7 @@ models:
       +query_tag: dbt_consumption
       +schema: 'src' # An optional parameter to deploy models to a schema. Default is in profiles.yml.
       +copy_grants: true
+      +post-hook: "{{ consumption_post_hook() }}"
 
 on-run-start: "{{ initialize_run() }}"
 on-run-end: "{{ complete_run() }}"
