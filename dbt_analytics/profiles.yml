@@ -1,10 +1,10 @@
 config:
-  use_colors: false
+  use_colors: true
 dbt_analytics: #PROJECT ONE
   target: dev
   outputs:
     dev:
-      account: cda03513
+      account: hj07236.ap-southeast-1
       client_session_keep_alive: false
       database: dbt
       password: '{{ env_var(''PASS'') }}'
@@ -16,7 +16,7 @@ dbt_analytics: #PROJECT ONE
       user: '{{ env_var(''USER'') }}'
       warehouse: dbt_wh
     prod:
-      account: cda03513
+      account: hj07236.ap-southeast-1
       client_session_keep_alive: false
       database: dbt
       password: '{{ env_var(''PASS'') }}'
