@@ -22,17 +22,4 @@
 
 {{ insert_dbt_status() }}
 
-{% if execute %}
-    {{ log("Creating dbt status table if it does not exist.", True) }}
-{% endif %}
-
-{{ create_dbt_audit_table() }}
-
-{% if execute %}
-    {{ log("Inserting new record into audit table.", True) }}
-{% endif %}
-
-{{ insert_dbt_audit() }}
-
-
 {% endmacro %}

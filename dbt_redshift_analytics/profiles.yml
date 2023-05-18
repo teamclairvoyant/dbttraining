@@ -1,0 +1,35 @@
+dbt_redshift_analytics: #PROJECT ONE
+    target: dev
+    outputs:
+      dev:
+        type: redshift
+        #method: iam
+        #cluster_id: 'redshift-cluster-1'
+        host: '{{ env_var(''REDSHIFT_HOST'') }}'
+        user: '{{ env_var(''REDSHIFT_USER'') }}'
+        password: '{{ env_var(''REDSHIFT_PASS'') }}'
+        autocreate: true
+        port: '{{ env_var(''REDSHIFT_PORT'') | int }}'
+        dbname: dbt
+        schema: src
+        #region: us-east-1
+        threads: 4
+        keepalives_idle: 240 # default 240 seconds
+        connect_timeout: 20 # default 10 seconds
+        ra3_node: true
+      prod:
+        type: redshift
+        #method: iam
+        #cluster_id: 'redshift-cluster-1'
+        host: '{{ env_var(''REDSHIFT_HOST'') }}'
+        user: '{{ env_var(''REDSHIFT_USER'') }}'
+        password: '{{ env_var(''REDSHIFT_PASS'') }}'
+        autocreate: true
+        port: '{{ env_var(''REDSHIFT_PORT'') | int }}'
+        dbname: dbt
+        schema: src
+        #region: us-east-1
+        threads: 4
+        keepalives_idle: 240 # default 240 seconds
+        connect_timeout: 20 # default 10 seconds
+        ra3_node: true
