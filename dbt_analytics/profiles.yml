@@ -1,5 +1,6 @@
 config:
   use_colors: true
+  partial_parse: true
 dbt_analytics: #PROJECT ONE
   target: dev
   outputs:

@@ -46,7 +46,19 @@ models:
       +query_tag: dbt_consumption
       +schema: 'src' # An optional parameter to deploy models to a schema. Default is in profiles.yml.
       +copy_grants: true
+    incremental:
+      +materialized: table
+      +transient: true
+      +query_tag: dbt_incremental
+      +schema: 'src' # An optional parameter to deploy models to a schema. Default is in profiles.yml.
+      +copy_grants: true
       +post-hook: "{{ consumption_post_hook() }}"
+
+seeds:
+  dbt_analytics:
+    nfl_elo:
+        +post-hook:
+          - "{{ primary_key_hook(this) }}"
 
 on-run-start: "{{ initialize_run() }}"
 on-run-end: "{{ complete_run() }}"
