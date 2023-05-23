@@ -4,19 +4,19 @@ dbt_analytics: #PROJECT ONE
   target: dev
   outputs:
     dev:
-      account: cda03513
+      account: mob60112.us-east-1
       client_session_keep_alive: false
       database: dbt
-      password: '{{ env_var(''PASS'') }}'
+      password: '{{ env_var(''SNOWFLAKE_PASS'') }}'
       query_tag: dbt
       role: dbt_developer
       schema: public
       threads: 4
       type: snowflake
-      user: '{{ env_var(''USER'') }}'
+      user: '{{ env_var(''SNOWFLAKE_USER'') }}'
       warehouse: dbt_wh
     prod:
-      account: cda03513
+      account: mob60112.us-east-1
       client_session_keep_alive: false
       database: dbt
       password: '{{ env_var(''PASS'') }}'
