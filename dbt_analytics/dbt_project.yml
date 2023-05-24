@@ -33,6 +33,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 # Configuration parameters may vary by target - ex: Snowflake, Redshift, etc.
 models:
+  pre-hook: "{{ insert_dbt_audits('model_start') }}"
+  post-hook: "{{ insert_dbt_audits('model_end') }}"
   dbt_analytics:
     # Config indicated by + and applies to all files under models/example/
     transformation:
@@ -47,6 +49,12 @@ models:
       +schema: 'src' # An optional parameter to deploy models to a schema. Default is in profiles.yml.
       +copy_grants: true
       +post-hook: "{{ consumption_post_hook() }}"
+    incremental:
+      +materialized: table
+      +transient: true
+      +query_tag: dbt_incremental
+      +schema: 'src' # An optional parameter to deploy models to a schema. Default is in profiles.yml.
+      +copy_grants: true
 
 on-run-start: "{{ initialize_run() }}"
 on-run-end: "{{ complete_run() }}"
